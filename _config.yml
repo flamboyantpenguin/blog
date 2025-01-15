@@ -18,7 +18,6 @@ title: Blog de Penguin # the main title
 
 tagline: The Blog of flamboyantpenguin # it will display as the subtitle
 
-
 description: >- # used by seo meta and the atom feed
   I am Penguin, a simple man living in this world. You can find my tech articles and my detailed musings on the world 
 
@@ -39,8 +38,7 @@ social:
     # The first element serves as the copyright owner's link
     - https://github.com/flamboyantpenguin # change to your GitHub homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/flamboyantpenguin
 
 # Site Verification Settings
 webmaster_verifications:
@@ -107,7 +105,7 @@ toc: true
 
 comments:
   # Global switch for the post-comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
+  provider: giscus
   # The provider options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -117,15 +115,15 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: flamboyantpenguin/blog
+    repo_id: R_kgDONqRA0Q
+    category: Announcements
+    category_id: DIC_kwDONqRA0c4CmCDA
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
-    input_position: # optional, default to 'bottom'
+    input_position: top
     lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
+    reactions_enabled: 1
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
