@@ -1,5 +1,8 @@
 #  The contact options.
 
+- type: home
+  icon: "fab fa-home"
+
 - type: github
   icon: "fab fa-github"
 

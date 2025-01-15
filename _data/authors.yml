@@ -6,12 +6,6 @@
 #   url: {homepage_of_author}
 # -------------------------------------
 
-Penguin:
-  name: flamboyantpenguin
-#  twitter: cotes2020
+flamboyantpenguin:
+  name: ペンギン
   url: https://flamboyantpenguin.in
-
-#sille_bille:
-#  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-#  twitter: dinesh_MKD
-#  url: https://github.com/SilleBille/

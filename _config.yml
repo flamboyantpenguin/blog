@@ -16,7 +16,8 @@ timezone: Asia/Kolkata
 
 title: Blog de Penguin # the main title
 
-tagline: Blog of Penguin # it will display as the subtitle
+tagline: The Blog of flamboyantpenguin # it will display as the subtitle
+
 
 description: >- # used by seo meta and the atom feed
   I am Penguin, a simple man living in this world. You can find my tech articles and my detailed musings on the world 
@@ -26,10 +27,7 @@ description: >- # used by seo meta and the atom feed
 url: "https://blog.flamboyantpenguin.in"
 
 github:
-  username: flamboyantpenguin.in # change to your GitHub username
-
-#twitter:
-#  username: twitter_username # change to your Twitter username
+  username: flamboyantpenguin # change to your GitHub username
 
 social:
   # Change to your full name.
@@ -39,7 +37,6 @@ social:
   links:
     - https://flamboyantpenguin.in
     # The first element serves as the copyright owner's link
-  #  - https://twitter.com/username # change to your Twitter homepage
     - https://github.com/flamboyantpenguin # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -96,10 +93,10 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://cdn.dawn.org.in"
-
+cdn: https://cdn.dawn.org.in/blog/penguin
 # the avatar on sidebar, support local or CORS resources
-avatar: "/blog/penguin/avatar.svg"
+avatar: /avatar.svg
+
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
