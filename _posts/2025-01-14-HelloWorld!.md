@@ -7,7 +7,8 @@ date: 2025-01-14 23:30:00 +0530
 categories: [Hello, Introduction]
 tags: [getting started]
 pin: true
-media_subpath: '/blog/penguin/posts/20250114'
+toc: false
+media_subpath: '/posts/20250114'
 ---
 
 Hello World!
