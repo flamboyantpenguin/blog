@@ -4,18 +4,21 @@
   --mask-bg: #c1c3c5;
   --main-border-color: #f3f3f3;
 
+  --primary-color: #48752c;
+  --secondary-color: #ff7f2a;
+
   /* Common color */
   --text-color: #34343c;
   --text-muted-color: #757575;
   --text-muted-highlight-color: inherit;
-  --heading-color: #2a2a2a;
+  --heading-color: var(--primary-color);
   --label-color: #585858;
   --blockquote-border-color: #eeeeee;
   --blockquote-text-color: #757575;
-  --link-color: #0056b2;
+  --link-color: var(--primary-color);
   --link-underline-color: #dee2e6;
   --button-bg: #ffffff;
-  --btn-border-color: #e9ecef;
+  --btn-border-color: var(--secondary-color);
   --btn-backtotop-color: #686868;
   --btn-backtotop-border-color: #f1f1f1;
   --checkbox-color: #c5c5c5;
@@ -33,22 +36,22 @@
   );
 
   /* Sidebar */
-  --site-title-color: rgb(113, 113, 113);
-  --site-subtitle-color: #717171;
+  --site-title-color: var(--primary-color);
+  --site-subtitle-color: var(--secondary-color);
   --sidebar-bg: #f6f8fa;
   --sidebar-border-color: #efefef;
   --sidebar-muted-color: #545454;
   --sidebar-active-color: #1d1d1d;
   --sidebar-hover-bg: rgb(223, 233, 241, 0.64);
   --sidebar-btn-bg: white;
-  --sidebar-btn-color: #8e8e8e;
-  --avatar-border-color: white;
+  --sidebar-btn-color: var(--primary-color);
+  --avatar-border-color: var(--secondary-color);
 
   /* Topbar */
   --topbar-bg: rgb(255, 255, 255, 0.7);
-  --topbar-text-color: rgb(78, 78, 78);
-  --search-border-color: rgb(240, 240, 240);
-  --search-icon-color: #c2c6cc;
+  --topbar-text-color: var(--secondary-color);
+  --search-border-color: var(--primary-color);
+  --search-icon-color: var(--primary-color);
   --input-focus-border-color: #b8b8b8;
 
   /* Home page */
@@ -60,7 +63,7 @@
   --toc-highlight: #0550ae;
   --toc-popup-border-color: lightgray;
   --btn-share-color: gray;
-  --btn-share-hover-color: #0d6efd;
+  --btn-share-hover-color: var(--secondary-color);
   --card-bg: white;
   --card-hovor-bg: #e2e2e2;
   --card-shadow: rgb(104, 104, 104, 0.05) 0 2px 6px 0,
@@ -95,7 +98,7 @@
 
   /* Archive */
   --timeline-color: rgba(0, 0, 0, 0.075);
-  --timeline-node-bg: #c2c6cc;
+  --timeline-node-bg: var(--secondary-color);
   --timeline-year-dot-color: #ffffff;
 
   /* --- Custom code light mode colors --- */
