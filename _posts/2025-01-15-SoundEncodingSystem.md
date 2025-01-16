@@ -44,6 +44,7 @@ experience these data again, the corresponding event is triggered by links. In o
 remember the memory.
 
 ![Interconnectivity Representation Sample](/Interconnectivity_Representation_Sample.png)
+_Sample Representation of Interconnectivity of Events, Sense Data and Emotions_
 
 For example, when we hear the sound of a birds chirping, the most probable image that comes to
 our mind would be forests. This is because most of the events in our brain related to forests are
@@ -76,6 +77,8 @@ chocolate and is perhaps talking to the girl. Birds are chirping and there is a 
 in the area.
 
 ![Sample Event Instance](/Sample_Event_Instance.png)
+_Representation of a sample event ‘Under the tree
+with a girl’_
 
 The emotion linked to this event could be complex, perhaps a mix of joy, thrill etc. We can call it
 romance for now. Now if this person experiences something like bird chirping (preferably of the
