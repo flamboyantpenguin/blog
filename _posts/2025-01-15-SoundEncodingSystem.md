@@ -4,7 +4,7 @@ description: >-
   My thoughts on the principle of music and interconnectivity of sounds
 author: flamboyantpenguin
 date: 2025-01-15 20:00:00 +0530
-categories: [Philosophy, Music]
+categories: [Research, Music]
 tags: [music, sound, philosophy, thought]
 pin: true
 media_subpath: '/posts/20250115'
