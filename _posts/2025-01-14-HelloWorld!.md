@@ -6,7 +6,7 @@ author: flamboyantpenguin
 date: 2025-01-14 23:30:00 +0530
 categories: [Info, Hello]
 tags: [getting started, hello world]
-pin: true
+pin: false
 toc: false
 media_subpath: '/posts/20250114'
 ---

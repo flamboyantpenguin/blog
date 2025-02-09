@@ -81,9 +81,9 @@ A UEFI system should have a `FAT32` formatted partition called the efi partition
 
 The root partition can be formatted as `ext4`, `xfs` or any other as per your preference. Note that setting up LUKS Encryption or a `btrfs` file system or an LVM partioning might be more complicated and outside the scope of this guide. Follow the [Arch Wiki](https://wiki.archlinux.org/title/Partitioning) for more info.
 
-In Linux, there's a unique name for each hard disks. Usually HDDs are denotes as `/dev/sda`, `/dev/sdb` and so on. SSDs will be `/dev/nvme0n1`, `/dev/nvme0n2` and so on. Partitions are identitied by adding a number to these names. For instance the first partition of the first HDD on the system would be `/dev/sda1`. Keep this in mind before you start partioning.
+In Linux, there's a unique name for each hard disks. Usually HDDs are denotes as `/dev/sda`, `/dev/sdb` and so on. SSDs will be `/dev/nvme0n1`, `/dev/nvme0n2` and so on. Partitions are identitied by adding a number to these names. For instance the first partition of the first HDD on the system would be `/dev/sda1`. Keep this in mind before you start partition.
 
-I'm familar with `parted` for partioning via the command line, so this guide will be following that.
+I'm familar with `parted` for partitioning via the command line, so this guide will be following that.
 
 ### Viewing Partitions and Disk Info
 
@@ -94,7 +94,7 @@ lsblk
 lsblk -o NAME,UUID,PARTLABEL,FSTYPE,MOUNTPOINT
 ```
 
-![Arch Install Partioning - Viewing Block Devices](/Partioning_View.png)
+![Arch Install Partioning - Viewing Block Devices](/Partition_View.png)
 
 ### Creating Partitions
 
@@ -150,8 +150,8 @@ Please do not copy this blindly and paste it to your system. Please check your e
 
 {%
   include embed/video.html
-  src='/Partioning.mp4'
-  title='Partioning Demo'
+  src='/Partition.mp4'
+  title='Partition Demo'
   autoplay=true
   loop=true
   muted=true
