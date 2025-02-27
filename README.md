@@ -5,9 +5,9 @@ Config files for [blog de flamboyantpenguin](https://blog.flamboyantpenguin.in).
 ```Txt
 blog de flamboyantpenguin 1.0.0
 
-Last Updated: 15-01-2025
+Last Updated: 28-02-2025
 Made by DAWN/ペンギン
 Forked from Chripy Jekyll Theme
 ```
 
-![DAWN](https://cdn.dawn.org.in/main/DAWN.svg)
+![DAWN](https://cdn.dawn.org.in/base/logo/DAWN.svg)
