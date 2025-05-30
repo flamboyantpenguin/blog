@@ -14,7 +14,7 @@ media_subpath: '/posts/20250116'
 
 Arch Linux is an open source, rolling release distribution. The OS is designed to be intentionally minimal and gives the choice of customization to the user. While this may sound interesting, this means it's the responsibility of the user to manage basically everything.
 
-For this reason, the OS known for the difficulty to use. People who achieve this are usually given the universal right to use the phrase `i use arch btw`.
+For this reason, the OS is known for the difficulty of use. People who achieve this are usually given the universal right to use the phrase `i use arch btw`.
 
 I personally daily drive Arch mainly because
 
@@ -42,9 +42,11 @@ It is recommended that you learn the basics of the topics below before you proce
 
 You can download the official ISO image from [Arch Linux download page](https://archlinux.org/download). You can use [Rufus](https://rufus.ie) in Windows or GNOME-Disk-Utility or any other tool to burn the ISO to a flash drive.
 
-This image won't work on Secure Boot enabled systems as the official images are no longer signed. There are however ways to sign the official ISO by using custom keys or by repacking the ISO with a [signed copy of Preloader](https://blog.hansenpartnership.com/linux-foundation-secure-boot-system-released). If you find it difficult to do this, you can turn of Secure Boot for the installation procedure.
+This image won't work on Secure Boot enabled systems as the official images are no longer signed. There are however ways to sign the official ISO by using custom keys or by repacking the ISO with a [signed copy of Preloader](https://blog.hansenpartnership.com/linux-foundation-secure-boot-system-released). If you find it difficult to do this, you can turn off Secure Boot for the installation procedure.
 
-I maintain a repository for hosting Linux installation images. You can download the repacked iso from [there](https://archive.dawn.org.in/Software/OS/Linux) or follow this [guide](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader) for doing it yourself.
+I maintain an archive for hosting some files and repo content. You can download the repacked iso from [there](https://archive.dawn.org.in/Media/OS/Linux) or follow this [guide](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader) for doing it yourself.
+
+- [archlinux-2025.05.01-x86_64-Secure_Boot.iso](https://archive.dawn.org.in/Media/OS/Linux/ArchLinux/archlinux-2025.05.01-x86_64-Secure_Boot.iso) (sha256: dec9c0411da9f96e987269a984301d632bc0bc4cd727ce21c824a8ca6a2dcd94)
 
 After flashing the image to the drive, boot into the installation medium. Connect your drive to the system (for VM, mount the iso image directly, no need to prepare a flash drive) and reboot the system. Soon after turning on your system, run the boot menu and select the drive. The Boot Menu can be accessed using the Boot Menu key (usually `ESC`, `F9` or `F12`).
 
@@ -239,7 +241,17 @@ Some modern systems like Dell offers a `Audit Mode` which makes the BIOS keys wr
 
 In older systems, you need to delete all the existing Secure Boot keys. This puts the system on Setup Mode after which you can use `sbctl` to enroll your keys along with Microsoft's keys to the BIOS. While you may be a Microsoft hater, **please don't skip uploading Microsoft's Secure Boot keys** as the firmware of some external pheriperals like graphics cards also rely on Microsoft's Secure Boot keys. They won't be able to work without Microsoft's keys.
 
-Save this script as a bash file and run it. The GRUB modules specified here are required for standard OS installations. I was able to get most of the required modules thanks to Ubuntu and Arch Wiki.
+The GRUB modules specified here are required for standard OS installations. I was able to get most of the required modules thanks to Ubuntu and Arch Wiki.
+
+First create keys and enroll them to your BIOS. The BIOS must be in `Audit Mode` as mentioned above to enroll keys. 
+
+```bash
+sbctl create-keys
+sbctl enroll-keys -m # WARNING! Don't forget the -m flag. Doing so could potentially brick your system
+```
+
+Next install GRUB and sign the GRUB `efi` file and the kernel (`vmlinuz-linux`). Whilst installing GRUB, you need to mention some modules. These modules provide extra capabilities to GRUB like lvm for loading lvm disks. It is better to mention commonly used modules to avoid errors later on. This list is taken from the Ubuntu script and is enough for most cases. 
+
 
 ```bash
 #!/bin/bash
@@ -348,22 +360,20 @@ grub-install --target=x86_64-efi --efi-directory=$efi --bootloader-id=GRUB --mod
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # sed -i 's/SecureBoot/SecureB00t/' /boot/efi/EFI/GRUB/grubx64.efi # Uncomment this if you still face Secure Boot violation issues
-sbctl create-keys
 chattr -i /sys/firmware/efi/efivars/KEK-8be4df61-93ca-11d2-aa0d-00e098032b8c
 chattr -i /sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f
 sbctl sign -s "$efi/EFI/GRUB/grubx64.efi"
 sbctl sign -s $kernel
-sbct enroll-keys -m # WARNING! Don't forget the -m flag. Doing so could potentially brick your system
 ```
 
-If you can't save this as a file and run it, you can download this script from [DAWN Archives](https://archives.dawn.org.in).
+If you can't save this as a file and run it, you can download this script from [DAWN Archives](https://archive.dawn.org.in).
 
 ```bash
 wget https://archive.dawn.org.in/Scripts/efi/install-grub-efi
 chmod u+x install-grub-efi
 
 # Replace <efi> with your efi mount location and <kernel> with your kernel location ex: /boot/efi and /boot/vmlinuz-linux respectively 
-./install-grub-shim
+./install-grub-efi
 ```
 
 ## Configure User Accounts
