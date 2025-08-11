@@ -168,7 +168,20 @@ The installation medium offers a tool called `pacstrap`. This tool helps us down
 Arch wiki recommends `base`, `linux` and `linux-firmware` packages for a basic installation. We however need more packages including a bootloader to use the OS.
 
 ```bash
-pacstrap -K /mnt base linux linux-firmware grub efibootmgr sbctl networkmanager man tldr nano sof-firmware wget
+pacstrap -K /mnt base linux linux-firmware grub efibootmgr sbctl networkmanager man tldr nano sof-firmware wget curl
+```
+
+You can also install `os-prober` to let GRUB find other OSs on the disk (like Windows) for effective dual boot setup
+
+### Potential Issue: pgp signature errors
+
+If you face errors related to pgp signatures while installing, try these steps
+
+```bash
+pacman-key --init
+pacman-key --populate archlinux 
+
+rm -r /var/cache/pacman/pkg/*
 ```
 
 ## Basic Configuration
@@ -189,7 +202,7 @@ After this, chroot into the system to complete rest of the configuration. `chroo
 arch-chroot /mnt
 ```
 
-### Time Zone, Locale and Keyboard
+### Time Zone, Locale, Keyboard and Hostname
 
 We set the time zone by creating a soft link of the Region and City to `/etc/localtime`
 
@@ -219,6 +232,14 @@ KEYMAP=us
 
 You can check other layouts and font options on the Arch Wiki.
 
+Finally, configure your system hostname. This name will be used as your system name for bluetooth pairing, networking and most other services. You might also see this at your terminal `<username>@<hostname>`
+
+```bash
+
+# Edit the file and just type in your system name to be used as hostname. No spaces or newlines
+nano /etc/hostname 
+```
+
 ## Bootloader Installation
 
 Next we have to install the bootloader. In this guide, we use GRUB.
@@ -226,7 +247,7 @@ Next we have to install the bootloader. In this guide, we use GRUB.
 ### UEFI Without Secure Boot
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ARCH
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
@@ -243,15 +264,16 @@ In older systems, you need to delete all the existing Secure Boot keys. This put
 
 The GRUB modules specified here are required for standard OS installations. I was able to get most of the required modules thanks to Ubuntu and Arch Wiki.
 
-First create keys and enroll them to your BIOS. The BIOS must be in `Audit Mode` as mentioned above to enroll keys. 
+First create keys and enroll them to your BIOS. The BIOS must be in `Audit Mode` as mentioned above to enroll keys.
 
 ```bash
 sbctl create-keys
 sbctl enroll-keys -m # WARNING! Don't forget the -m flag. Doing so could potentially brick your system
+
+# The -m flags appends Microsoft's keys to the db as well. These keys are required for loading firmware for some peripherals like GPUs
 ```
 
-Next install GRUB and sign the GRUB `efi` file and the kernel (`vmlinuz-linux`). Whilst installing GRUB, you need to mention some modules. These modules provide extra capabilities to GRUB like lvm for loading lvm disks. It is better to mention commonly used modules to avoid errors later on. This list is taken from the Ubuntu script and is enough for most cases. 
-
+Next install GRUB and sign the GRUB `efi` file and the kernel (`vmlinuz-linux`). Whilst installing GRUB, you need to mention some modules. These modules provide extra capabilities to GRUB like lvm for loading lvm disks. It is better to mention commonly used modules to avoid errors later on. This list is taken from the Ubuntu script and is enough for most cases.
 
 ```bash
 #!/bin/bash
@@ -259,7 +281,7 @@ Next install GRUB and sign the GRUB `efi` file and the kernel (`vmlinuz-linux`).
 
 efi="/boot/efi"
 kernel="/boot/vmlinuz-linux"
-
+grub_id="ARCH"
 
 CD_MODULES="
 	all_video
@@ -356,20 +378,25 @@ GRUB_MODULES="$CD_MODULES
 	"
 
 
-grub-install --target=x86_64-efi --efi-directory=$efi --bootloader-id=GRUB --modules="$GRUB_MODULES" --disable-shim-lock
+grub-install --target=x86_64-efi --efi-directory=$efi --bootloader-id=$grub_id --modules="$GRUB_MODULES" --disable-shim-lock
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# I forgot where I got this wonderful solution from, I will update soon as I find it
 # sed -i 's/SecureBoot/SecureB00t/' /boot/efi/EFI/GRUB/grubx64.efi # Uncomment this if you still face Secure Boot violation issues
-chattr -i /sys/firmware/efi/efivars/KEK-8be4df61-93ca-11d2-aa0d-00e098032b8c
-chattr -i /sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f
-sbctl sign -s "$efi/EFI/GRUB/grubx64.efi"
+
+# Uncomment this if you face perm issues even when on root)
+#chattr -i /sys/firmware/efi/efivars/KEK-8be4df61-93ca-11d2-aa0d-00e098032b8c
+#chattr -i /sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f
+
+sbctl sign -s "$efi/EFI/$grub_id/grubx64.efi"
 sbctl sign -s $kernel
 ```
 
 If you can't save this as a file and run it, you can download this script from [DAWN Archives](https://archive.dawn.org.in).
 
 ```bash
-wget https://archive.dawn.org.in/Scripts/efi/install-grub-efi
+wget https://archive.dawn.org.in/Scripts/efi/install-grub-efi # sha256 checksum: 97b5b8737ab6fdda0653cbcc129041d48c609d1dad76f86142d6091ea92134e4
+sha256sum install-grub-efi # Check whether the value is the same as 97b5b8737ab6fdda0653cbcc129041d48c609d1dad76f86142d6091ea92134e4
 chmod u+x install-grub-efi
 
 # Replace <efi> with your efi mount location and <kernel> with your kernel location ex: /boot/efi and /boot/vmlinuz-linux respectively 
@@ -387,6 +414,8 @@ passwd root # Please don't forget this password
 For a standard Desktop Experience, it is not recommended to work as the root user as it can cause unintended harm on the system. So let's create a username and configure `sudo` for running administrator commands.
 
 ```bash
+# Run this as root
+pacman -S sudo
 groupadd wheel
 useradd -m -G wheel <username> # Replce <username> with a name of your choice
 passwd <username>
@@ -470,20 +499,65 @@ sudo pacman -S plymouth
 sudo nano /etc/default/grub # GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 ```
 
+You can change plymouth themes using the `plymouth-set-default-theme` command.
+
 ### Install Custom GRUB Theme
 
 There are tons of grub themes on the internet. For this guide, I will show a demonstration using [`distro-grub-themes`](https://github.com/AdisonCavani/distro-grub-themes).
 
 ```bash
+# Run this as root
+
 git clone https://github.com/AdisonCavani/distro-grub-themes
 cd distro-grub-themes/themes
-mkdir -p /boot/grub/themes/distro-theme-grub
+mkdir -p /boot/grub/themes/distro-theme-grub # Create a dir for placing grub themes. This is the usual default
 sudo tar -xaf <theme>.tar -C /boot/grub/themes/distro-theme-grub # Replace <theme> with a theme of your choice from the directory
 
+# The repo contains a collection for grub themes all as tar archives. Select one you wish and extract them
+# Previewing themes might prove to be default while on the installation device
+
+# Cleanup after this. It's not a good idea to keep redundant data in /root
+cd ../..
+rm -r distro-grub-themes
+
 # Edit `/etc/default/grub` and add/modify `GRUB_THEME` line to "/boot/grub/themes/distro-theme-grub/theme.txt"
-sudo nano /etc/default/grub # GRUB_THEME="/boot/grub/themes/distro-theme-tilde/theme.txt"
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo nano /etc/default/grub # GRUB_THEME="/boot/grub/themes/distro-theme-grub/theme.txt"
+sudo grub-mkconfig -o /boot/grub/grub.cfg # Finally run grub-mkconfig to update changes
 ```
+
+## Firmware Updater - fwupd
+
+Now that we have went this far to install with UEFI and even enable Secure Boot, we also use `fwupd` to update firmware via UEFI capsules
+
+```bash
+sudo pacman -S fwupd
+
+sudo sbctl sign -s /usr/lib/fwupd/efi/fwupdx64.efi
+```
+
+After this, edit `/etc/fwupd/fwupd.conf` and append this to disable ShimLock
+
+```txt
+[uefi_capsule]
+DisableShimForSecureBoot=true
+```
+
+## AUR Helper - yay
+
+Arch User Repository (AUR) is a collection of gits that host `PKGBUILD` files. `PKGBUILD` is a file that defines how a package must be built. AUR is a repository for hosting user defined `PKGBUILD`s. This will enable you to install packages not available in the official repos. Not all packages are purely built from binary and even has a `bin` or `appimage` variant. In simple words, you can use an AUR helper like `yay` to install apps. `yay` also searches the official repos first before `AUR`, so it can act as an all-in-one package manager
+
+> Please double check AUR packages before installing them. AUR packages can be hosted by anyone and can thus, unfortunately, be a venue for malwares as well
+{: .prompt-danger }
+
+```bash
+# Don' run this as root
+git clone https://aur.archlinux.org/yay.git
+cd yay
+
+makepkg -si # Build the package from the PKGBUILD file
+```
+
+Follow instructions on the screen to continue installation.
 
 ## Install a GUI
 
