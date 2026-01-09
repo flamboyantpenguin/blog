@@ -44,9 +44,7 @@ You can download the official ISO image from [Arch Linux download page](https://
 
 This image won't work on Secure Boot enabled systems as the official images are no longer signed. There are however ways to sign the official ISO by using custom keys or by repacking the ISO with a [signed copy of Preloader](https://blog.hansenpartnership.com/linux-foundation-secure-boot-system-released). If you find it difficult to do this, you can turn off Secure Boot for the installation procedure.
 
-I maintain an archive for hosting some files and repo content. You can download the repacked iso from [there](https://archive.dawn.org.in/Media/OS/Linux) or follow this [guide](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader) for doing it yourself.
-
-- [archlinux-2025.05.01-x86_64-Secure_Boot.iso](https://archive.dawn.org.in/Media/OS/Linux/ArchLinux/archlinux-2025.05.01-x86_64-Secure_Boot.iso) (sha256: dec9c0411da9f96e987269a984301d632bc0bc4cd727ce21c824a8ca6a2dcd94)
+I maintain an archive for hosting some files and repo content. You can download the repacked iso from [there](https://archive.dawn.org.in/Software/OS/Linux/ArchLinux/) or follow this [guide](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Replacing_the_boot_loader_with_PreLoader) for doing it yourself. It auto generates the iso on the second day of the month (arch releases new iso on the first day of the month).
 
 After flashing the image to the drive, boot into the installation medium. Connect your drive to the system (for VM, mount the iso image directly, no need to prepare a flash drive) and reboot the system. Soon after turning on your system, run the boot menu and select the drive. The Boot Menu can be accessed using the Boot Menu key (usually `ESC`, `F9` or `F12`).
 
