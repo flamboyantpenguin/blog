@@ -1,3 +1,10 @@
+/*
+ * Originally from cotes2020/jekyll-theme-chirpy
+ * © 2019 Cotes Chung (MIT License)
+ *
+ * Modified by flamboyantpenguin
+ */
+
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as mx;
 @use '../abstracts/breakpoints' as bp;
@@ -17,7 +24,6 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   overflow-y: auto;
   width: v.$sidebar-width;
   background: var(--sidebar-bg);
-  border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -160,7 +166,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
       &.active {
         .nav-link {
           color: var(--sidebar-active-color);
-          background-color: var(--sidebar-hover-bg);
+          border: 2px solid var(--sidebar-border-color);
 
           span {
             opacity: 1;

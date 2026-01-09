@@ -43,7 +43,7 @@ such as vision, sound, taste, sense, smell are stored and linked to the event. W
 experience these data again, the corresponding event is triggered by links. In other words, we
 remember the memory.
 
-![Interconnectivity Representation Sample](/Interconnectivity_Representation_Sample.png)
+![Interconnectivity Representation Sample](/Interconnectivity_Representation_Sample.avif)
 _Sample Representation of Interconnectivity of Events, Sense Data and Emotions_
 
 For example, when we hear the sound of a birds chirping, the most probable image that comes to
@@ -76,7 +76,7 @@ For instance, let’s take the case of a person who is sitting under a tree with
 chocolate and is perhaps talking to the girl. Birds are chirping and there is a sweet scent of flowers
 in the area.
 
-![Sample Event Instance](/Sample_Event_Instance.png)
+![Sample Event Instance](/Sample_Event_Instance.avif)
 _Representation of a sample event ‘Under the tree
 with a girl’_
 

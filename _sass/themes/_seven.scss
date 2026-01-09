@@ -1,0 +1,123 @@
+@mixin witness {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #36F014;
+    --secondary-color: #0096FF;
+    --tertiary-color: #EC7A2E;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/bg.avif);
+}
+
+@mixin freedom {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #68ACAB;
+    --secondary-color: #9EA8C2;
+    --tertiary-color: #68ACAB;
+    --font-color: whitesmoke;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/wind.avif);
+}
+
+@mixin contracts {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #F6F568;
+    --secondary-color: #E7B757;
+    --tertiary-color: #E9CA75;
+    --font-color: whitesmoke;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/geo.avif);
+}
+
+@mixin eternity {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #A255C9;
+    --secondary-color: #623df5;
+    --tertiary-color: #F7F1F8;
+    --font-color: whitesmoke;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/electro.avif);
+}
+
+@mixin wisdom {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #A6F44E;
+    --secondary-color: #E5F5D7;
+    --tertiary-color: #6AC083;
+    --font-color: whitesmoke;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/life.avif);
+}
+
+@mixin justice {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #43E0EA;
+    --secondary-color: #B2D8F1;
+    --tertiary-color: #39AEB3;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/sea.avif);
+}
+
+@mixin war {
+    --background-color: #5a2c2c;
+    --secondary-background-color: #000;
+    --primary-color: #9F3847;
+    --secondary-color: #EC7A2E;
+    --tertiary-color: #B58A3F;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/fire.avif);
+}
+
+@mixin love {
+    --background-color: #181818;
+    --primary-color: #BEB9DB;
+    --secondary-color: #7c8ae4;
+    --tertiary-color: #8283aa;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/snow.avif);
+}
+
+@mixin moon {
+    --background-color: #181818;
+    --primary-color: #A0B3BA;
+    --secondary-color: #5B8EC9;
+    --tertiary-color: #6e5daa;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/moon.avif);
+}
+
+@mixin spincomplete {
+    --background-color: #181818;
+    --secondary-background-color: #000;
+    --primary-color: #A8C8FF;
+    --secondary-color: #BDC7DC;
+    --tertiary-color: #DBBCE1;
+    --font-color: whitesmoke;
+    --yin-color: white;
+    --yang-color: #000;
+
+    --background-image: url(/assets/img/wallpapers/newyear.avif);
+
+}

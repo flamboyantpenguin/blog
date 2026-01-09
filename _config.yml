@@ -14,12 +14,12 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Blog de Penguin # the main title
+title: Penguin # the main title0
 
-tagline: The Blog of flamboyantpenguin # it will display as the subtitle
+tagline: I write stories, programs and experiences # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  I am Penguin, a simple man living in this world. You can find my tech articles and my detailed musings on the world 
+  I am Penguin, a curious being living in this world. You can find my tech articles and my detailed musings on the world here
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -38,7 +38,7 @@ social:
     # The first element serves as the copyright owner's link
     - https://github.com/flamboyantpenguin # change to your GitHub homepage
     # Uncomment below to add more social links
-    - https://www.linkedin.com/in/flamboyantpenguin
+    - https://code.dawn.org.in/flamboyantpenguin
 
 # Site Verification Settings
 webmaster_verifications:
@@ -94,7 +94,6 @@ theme_mode: # [light | dark]
 cdn: https://cdn.dawn.org.in/blog/penguin
 # the avatar on sidebar, support local or CORS resources
 avatar: /avatar.svg
-
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

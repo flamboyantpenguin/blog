@@ -1,3 +1,10 @@
+/*
+ * Originally from cotes2020/jekyll-theme-chirpy
+ * © 2019 Cotes Chung (MIT License)
+ *
+ * Modified by flamboyantpenguin
+ */
+
 @use '../abstracts/breakpoints' as bp;
 @use '../abstracts/placeholders';
 
@@ -70,14 +77,6 @@
 
       &:nth-child(odd) {
         background-color: var(--main-bg, #ffffff);
-        background-image: linear-gradient(
-          to left,
-          #ffffff,
-          #fbfbfb,
-          #fbfbfb,
-          #fbfbfb,
-          #ffffff
-        );
       }
 
       &::before {

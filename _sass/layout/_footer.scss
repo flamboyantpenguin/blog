@@ -1,12 +1,22 @@
+/*
+ * Originally from cotes2020/jekyll-theme-chirpy
+ * © 2019 Cotes Chung (MIT License)
+ *
+ * Modified by flamboyantpenguin
+ */
+
 @use '../abstracts/breakpoints' as bp;
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as mx;
 @use '../abstracts/placeholders';
 
 footer {
-  background-color: var(--main-bg);
+  background-color: transparent;
+  border: 0px solid var(--tertiary-color);
+  border-radius: 10px;
   height: v.$footer-height;
-  border-top: 1px solid var(--main-border-color);
+  margin-bottom: 10px;
+  padding: 10px;
 
   @extend %text-xs;
 

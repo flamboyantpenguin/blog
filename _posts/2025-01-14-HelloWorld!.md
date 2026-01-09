@@ -1,7 +1,7 @@
 ---
 title: Hello World!
 description: >-
-  Let the blog start with a simple message that perhaps resontates with everyone
+  Init blog message: why -> resonance true for all (beings)
 author: flamboyantpenguin
 date: 2025-01-14 23:30:00 +0530
 categories: [Info, Hello]

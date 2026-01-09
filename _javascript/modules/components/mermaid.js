@@ -1,9 +1,15 @@
+/*
+ * Originally from cotes2020/jekyll-theme-chirpy
+ * © 2019 Cotes Chung (MIT License)
+ *
+ * Modified by flamboyantpenguin
+ */
 /**
  * Mermaid-js loader
  */
 
 const MERMAID = 'mermaid';
-const themeMapper = Theme.getThemeMapper('default', 'dark');
+const themeMapper = Theme.getModeMapper('default', 'dark');
 
 function refreshTheme(event) {
   if (event.source === window && event.data && event.data.id === Theme.ID) {

@@ -54,7 +54,7 @@ After flashing the image to the drive, boot into the installation medium. Connec
 
 When you boot using the Secure Boot image, you should see this screen if secure boot is enabled.
 
-![Hash Tool Dialog](/HashToolDialog.png)
+![Hash Tool Dialog](/HashToolDialog.avif)
 
 Click on Enroll Hash. Select `loader.efi` and enroll it's hash. Next navigate to `arch` directory. Enroll the hash of `vmlinuz-linux`. This is the linux kernel.
 
@@ -96,7 +96,7 @@ lsblk
 lsblk -o NAME,UUID,PARTLABEL,FSTYPE,MOUNTPOINT
 ```
 
-![Arch Install Partioning - Viewing Block Devices](/Partition_View.png)
+![Arch Install Partioning - Viewing Block Devices](/Partition_View.avif)
 
 ### Creating Partitions
 
@@ -159,7 +159,7 @@ Please do not copy this blindly and paste it to your system. Please check your e
   muted=true
 %}
 
-[comment]: # ![MOK Management Dialog](/Partioning_VM_DualBoot.png)
+[comment]: # ![MOK Management Dialog](/Partioning_VM_DualBoot.avif)
 
 ## pacstrap
 
@@ -569,7 +569,7 @@ Arch Linux repositories host packages for most GUI environments. You can install
 sudo pacman -S gnome gnome-extras
 ```
 
-![GNOME Desktop](/GNOMEonArch.png)
+![GNOME Desktop](/GNOMEonArch.avif)
 
 - [KDE Plasma](https://kde.org/plasma-desktop/)
 
@@ -577,7 +577,7 @@ sudo pacman -S gnome gnome-extras
 sudo pacman -S plasma
 ```
 
-![KDE Plasma Desktop de Penguin](/KDEPlasmaonArch.png)
+![KDE Plasma Desktop de Penguin](/KDEPlasmaonArch.avif)
 
 - [Budgie](https://buddiesofbudgie.org/)
 
@@ -585,7 +585,17 @@ sudo pacman -S plasma
 sudo pacman -S budgie
 ```
 
-![Budgie Desktop](/BudgieonArch.png)
+![Budgie Desktop](/BudgieonArch.avif)
+
+- [Hyprland](https://hypr.land)
+
+```bash
+sudo pacman -S hyprland
+```
+
+![Hyprland Desktop](/hyprdot-2.avif)
+
+This one gives you maximum freedom in customization. Your theme is based on your configuration files. Check this theme [conf here](https://code.dawn.org.in/flamboyantpenguin/hyprdot)
 
 ## Conclusion
 
