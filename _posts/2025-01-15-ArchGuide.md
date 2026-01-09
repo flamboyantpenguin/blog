@@ -542,17 +542,31 @@ After this, edit `/etc/fwupd/fwupd.conf` and append this to disable ShimLock
 DisableShimForSecureBoot=true
 ```
 
-## AUR Helper - yay
+## AUR Helpers
 
-Arch User Repository (AUR) is a collection of gits that host `PKGBUILD` files. `PKGBUILD` is a file that defines how a package must be built. AUR is a repository for hosting user defined `PKGBUILD`s. This will enable you to install packages not available in the official repos. Not all packages are purely built from binary and even has a `bin` or `appimage` variant. In simple words, you can use an AUR helper like `yay` to install apps. `yay` also searches the official repos first before `AUR`, so it can act as an all-in-one package manager
+Arch User Repository (AUR) is a collection of gits that host `PKGBUILD` files. `PKGBUILD` is a file that defines how a package must be built. AUR is a repository for hosting user defined `PKGBUILD`s. This will enable you to install packages not available in the official repos. Not all packages are purely built from binary and even has a `bin` or `appimage` variant. In simple words, you can use an AUR helper like `yay` or `paru` to install apps. Most AUR helpers also searches the official repos first before `AUR`, so it can act as an all-in-one package manager
 
 > Please double check AUR packages before installing them. AUR packages can be hosted by anyone and can thus, unfortunately, be a venue for malwares as well
 {: .prompt-danger }
 
+### yay
+
 ```bash
 # Don' run this as root
+sudo pacman -S base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
+
+makepkg -si # Build the package from the PKGBUILD file
+```
+
+### paru
+
+```bash
+# Don' run this as root
+sudo pacman -S base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
 
 makepkg -si # Build the package from the PKGBUILD file
 ```
